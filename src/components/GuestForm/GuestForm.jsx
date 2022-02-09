@@ -11,11 +11,9 @@ export default function GuestForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newEntry = {
-      id: new Date().toString(),
-      name,
-      comment,
-    };
+    const id = new Date().toString();
+
+    const newEntry = { id, name, comment };
 
     setEntries([...entries, newEntry]);
     setUser(name);
@@ -43,7 +41,11 @@ export default function GuestForm() {
           onChange={(e) => setComment(e.target.value)}
         />
         <button onClick={handleSubmit}>Sign</button>
-        {user && <p onClick={handleChangeUser}>Not {user}?</p>}
+        {user && (
+          <p style={{ cursor: 'pointer' }} onClick={handleChangeUser}>
+            Not {user}? Click here.
+          </p>
+        )}
       </form>
     </>
   );
