@@ -2,11 +2,9 @@ import { useState } from 'react';
 
 export default function App() {
   const [user, setUser] = useState('');
-  const [currentUser, setCurrentUser] = useState('Bob Loblaw');
+  const [currentUser, setCurrentUser] = useState('');
   const [entry, setEntry] = useState('');
-  const [entries, setEntries] = useState([
-    { id: 'Jojo-0', name: 'Jojo', comment: 'hey it is me' },
-  ]);
+  const [entries, setEntries] = useState([]);
 
   const handleChangeUser = (e) => {
     e.preventDefault();
@@ -15,20 +13,24 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEntries([...entries, { entry }]);
+    const id = new Date();
     setCurrentUser(user);
+
+    const newEntry = { id: id, name: user, comment: entry };
+
+    setEntries([...entries, newEntry]);
   };
 
   return (
     <div>
       <header>
         <h1>Guestbook</h1>
-        <h2>Howdy, {user}</h2>
       </header>
       <main>
         <form>
           {currentUser ? (
             <>
+              <h2>Howdy, {currentUser}</h2>
               <span>Not {currentUser}? </span>
               <button onClick={handleChangeUser}>Change user</button>
             </>
