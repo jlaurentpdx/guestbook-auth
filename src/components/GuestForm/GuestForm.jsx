@@ -8,8 +8,9 @@ export default function GuestForm({ entries, setEntries }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newEntry = {
-      id: new Date().toTimeString(),
+      id: new Date().toString(),
       name,
       comment,
     };
