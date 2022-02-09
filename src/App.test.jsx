@@ -27,4 +27,10 @@ test('should allow users to add a guestbook entry', () => {
 
   expect(screen.getAllByRole('heading', { name: /test/i })).toHaveLength(2);
   expect(screen.getByText(/it's me, i'm a test/i)).toBeInTheDocument();
+  expect(screen.getByText(/2022/i)).toBeInTheDocument();
+
+  // TODO: Test whether a user can exit, then log a new entry
+  //    Previous efforts to run this test resulted in a return to
+  //    the default App state as expected on lines 18-22, but did not
+  //    render a new user's information
 });
