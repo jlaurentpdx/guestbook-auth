@@ -1,20 +1,21 @@
-import { useState, useContext, createContext } from 'react';
+import { useState, useContext, useMemo, createContext } from 'react';
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState('');
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+  const value = useMemo(() => ({ user, setUser }), [user]);
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
 
 export const useUser = () => {
   const context = useContext(UserContext);
 
-  if (context === undefined)
+  if (context === undefined) {
     throw new Error('useUser can not be used outside of UserProvider');
+  }
+
+  return context;
 };

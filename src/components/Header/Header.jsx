@@ -1,16 +1,12 @@
 import { useUser } from '../../context/UserContext';
 
 export default function Header() {
-  const { currentUser } = useUser();
+  const { user, setUser } = useUser();
+
   return (
     <header>
       <h1>Guestbook</h1>
-      {currentUser && (
-        <>
-          <h2>Thank you for signing, {currentUser}.</h2>
-          <p onClick={handleChangeUser}>Not {currentUser}?</p>
-        </>
-      )}
+      {user && <h2>Thank you for signing, {user}.</h2>}
     </header>
   );
 }

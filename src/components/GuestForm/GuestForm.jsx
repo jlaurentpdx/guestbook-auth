@@ -1,43 +1,46 @@
 import { useState } from 'react';
+import { useUser } from '../../context/UserContext';
 
 export default function GuestForm({ entries, setEntries }) {
-  const [user, setUser] = useState('');
-  const [currentUser, setCurrentUser] = useState('');
-  const [entry, setEntry] = useState('');
-
-  const handleChangeUser = () => {
-    setCurrentUser('');
-  };
+  const [name, setName] = useState('');
+  const [comment, setComment] = useState('');
+  const { user, setUser } = useUser();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEntry = {
       id: new Date().toTimeString(),
-      name: user,
-      comment: entry,
+      name,
+      comment,
     };
 
     setEntries([...entries, newEntry]);
-    setCurrentUser(user);
-    setEntry('');
+    setUser(name);
+    setComment('');
+  };
+
+  const handleChangeUser = () => {
+    setUser('');
+    setName('');
   };
 
   return (
     <>
       <form>
-        {!currentUser && (
+        {!user && (
           <input
-            value={user}
+            value={name}
             placeholder="Your Name"
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         )}
         <input
-          value={entry}
-          placeholder="Your Entry"
-          onChange={(e) => setEntry(e.target.value)}
+          value={comment}
+          placeholder="Your Comment"
+          onChange={(e) => setComment(e.target.value)}
         />
         <button onClick={handleSubmit}>Sign</button>
+        {user && <p onClick={handleChangeUser}>Not {user}?</p>}
       </form>
     </>
   );
