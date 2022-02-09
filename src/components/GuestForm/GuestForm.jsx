@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
+import { useEntries } from '../../context/EntryContext';
 
-export default function GuestForm({ entries, setEntries }) {
+export default function GuestForm() {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const { user, setUser } = useUser();
+  const { entries, setEntries } = useEntries();
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,11 +1,16 @@
 import Entry from '../Entry/Entry';
+import { useEntries } from '../../context/EntryContext';
 
-const clearLocalStorage = () => {
-  if (confirm('Are you sure you want to clear all comments?'))
-    localStorage.clear('entries');
-};
+export default function EntryList() {
+  const { entries, setEntries } = useEntries();
 
-export default function EntryList({ entries }) {
+  const clearLocalStorage = () => {
+    if (confirm('Are you sure you want to clear all comments?')) {
+      setEntries([]);
+      localStorage.clear('entries');
+    }
+  };
+
   return (
     <>
       <button onClick={clearLocalStorage}>Clear</button>
