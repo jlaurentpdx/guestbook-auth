@@ -1,3 +1,5 @@
+// Hook borrowed from: https://usehooks.com/useLocalStorage/
+
 import { useState } from 'react';
 
 export default function useLocalStorage(key, initialValue) {
