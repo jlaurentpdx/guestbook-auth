@@ -27,17 +27,19 @@ export default function GuestForm() {
 
   return (
     <>
-      <form>
+      <form id="guest-form">
         {!user && (
           <input
             value={name}
             placeholder="Your Name"
+            aria-label="Your Name"
             onChange={(e) => setName(e.target.value)}
           />
         )}
         <input
           value={comment}
           placeholder="Your Comment"
+          aria-label="Your Comment"
           onChange={(e) => setComment(e.target.value)}
         />
         <button onClick={handleSubmit}>Sign</button>
