@@ -11,7 +11,11 @@ export default function GuestForm({ entries, setEntries }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newEntry = { id: new Date(), name: user, comment: entry };
+    const newEntry = {
+      id: new Date().toTimeString(),
+      name: user,
+      comment: entry,
+    };
 
     setEntries([...entries, newEntry]);
     setCurrentUser(user);
