@@ -25,12 +25,7 @@ export default function GuestForm({ entries, setEntries }) {
   return (
     <>
       <form>
-        {currentUser ? (
-          <>
-            <h2>Thank you for signing, {currentUser}.</h2>
-            <p onClick={handleChangeUser}>Not {currentUser}?</p>
-          </>
-        ) : (
+        {!currentUser && (
           <input
             value={user}
             placeholder="Your Name"
