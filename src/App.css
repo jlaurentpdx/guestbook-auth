@@ -24,3 +24,10 @@ body {
   color: #eee;
   transition: 0.2s all;
 }
+
+.toggle {
+  position: fixed;
+  margin: auto;
+  bottom: 0;
+  font-size: 200%;
+}

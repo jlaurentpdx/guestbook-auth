@@ -1,5 +1,9 @@
-header {
-  max-height: max-content;
+.title {
+  margin-top: 0;
+}
+
+.toggle {
+  border: none;
 }
 
 .currentUser {

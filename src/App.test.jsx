@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import App from './App';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import { ThemeProvider } from './context/ThemeContext';
 
 const entries = [
   {
@@ -44,7 +45,11 @@ beforeAll(() => server.listen());
 afterAll(() => server.close());
 
 test('should allow users to add a guestbook entry', async () => {
-  render(<App />);
+  render(
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  );
 
   // Component testing - by default, the app should render the following...
   const entriesList = await screen.findAllByRole('listitem');
