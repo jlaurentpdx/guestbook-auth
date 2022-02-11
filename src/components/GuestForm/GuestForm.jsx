@@ -16,12 +16,12 @@ export default function GuestForm() {
 
     try {
       const newEntry = await createEntry(entry);
-      setEntries((prevState) => [newEntry[0], ...prevState]);
+      setUser(name);
+      setComment('');
+      await setEntries((prevState) => [newEntry[0], ...prevState]);
     } catch {
       alert('something went wrong');
     }
-    setUser(name);
-    setComment('');
   };
 
   const handleChangeUser = () => {

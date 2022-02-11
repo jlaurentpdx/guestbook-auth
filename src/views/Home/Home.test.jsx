@@ -13,5 +13,5 @@ test('should display a guest form and an empty list of entries', () => {
   const buttons = screen.getAllByRole('button');
 
   expect(inputs).toHaveLength(2);
-  expect(buttons).toHaveLength(2);
+  expect(buttons).toHaveLength(1);
 });

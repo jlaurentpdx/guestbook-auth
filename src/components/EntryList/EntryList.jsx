@@ -6,7 +6,7 @@ export default function EntryList() {
 
   return (
     <>
-      <ul>
+      <ul style={{ listStyle: 'none' }}>
         {entries.length > 0
           ? entries.map((entry) => <Entry key={entry.id} {...entry} />)
           : null}

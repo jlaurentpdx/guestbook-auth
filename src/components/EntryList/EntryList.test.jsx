@@ -12,10 +12,8 @@ test('should render an empty list of entries and a clear button', () => {
     </UserProvider>
   );
 
-  const clearButton = screen.getByRole('button', {
-    name: /clear guestbook entries/i,
-  });
-  expect(clearButton).toBeInTheDocument();
+  const list = screen.getByRole('list');
+  expect(list.children).toHaveLength(0);
 
   // TODO: Currently, this test will always render an empty div.
   //    Read into how to test for context via EntriesProvider.
