@@ -9,7 +9,6 @@ export function EntriesProvider({ children }) {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchEntries();
-      console.log('data', data);
       setEntries(data);
     };
     fetchData();

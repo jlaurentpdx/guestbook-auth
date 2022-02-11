@@ -7,7 +7,7 @@ export default function GuestForm() {
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
   const { user, setUser } = useUser();
-  const { entries, setEntries } = useEntries();
+  const { setEntries } = useEntries();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export default function GuestForm() {
 
     try {
       const newEntry = await createEntry(entry);
-      setEntries([...entries, newEntry]);
+      setEntries((prevState) => [newEntry[0], ...prevState]);
     } catch {
       alert('something went wrong');
     }
