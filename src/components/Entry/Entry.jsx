@@ -1,9 +1,9 @@
-export default function Entry({ id, name, comment }) {
+export default function Entry({ name, comment, date }) {
   return (
-    <div key={id}>
+    <li>
       <h3>{name}</h3>
       <p>{comment}</p>
-      <p>{id}</p>
-    </div>
+      <p>{date}</p>
+    </li>
   );
 }

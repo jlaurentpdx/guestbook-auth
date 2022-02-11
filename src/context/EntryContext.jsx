@@ -1,10 +1,19 @@
-import { useContext, createContext } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { useContext, createContext, useState, useEffect } from 'react';
+import { fetchEntries } from '../services/entries';
 
 export const EntriesContext = createContext();
 
 export function EntriesProvider({ children }) {
-  const [entries, setEntries] = useLocalStorage('entries', []);
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchEntries();
+      console.log('data', data);
+      setEntries(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <EntriesContext.Provider value={{ entries, setEntries }}>

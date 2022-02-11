@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import { useEntries } from '../../context/EntryContext';
+import { createEntry } from '../../services/entries';
 
 export default function GuestForm() {
   const [name, setName] = useState('');
@@ -8,14 +9,17 @@ export default function GuestForm() {
   const { user, setUser } = useUser();
   const { entries, setEntries } = useEntries();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const date = new Date().toDateString();
+    const entry = { name, comment, date };
 
-    const id = new Date().toString();
-
-    const newEntry = { id, name, comment };
-
-    setEntries([...entries, newEntry]);
+    try {
+      const newEntry = await createEntry(entry);
+      setEntries([...entries, newEntry]);
+    } catch {
+      alert('something went wrong');
+    }
     setUser(name);
     setComment('');
   };
