@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 import userEvent from '@testing-library/user-event';
 import App from './App';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 
 const entries = [
   {
@@ -27,27 +27,17 @@ const entry = {
 };
 
 const server = setupServer(
-  rest.post(
-    `${process.env.REACT_APP_SUPABASE_URL}/rest/v1/entries`,
-    (req, res, ctx) => {
-      if (res.status === 200) {
-        console.log('res works');
-        return res(ctx.json([entry]));
-      }
-      return res(ctx.json([entry]));
-    }
-  ),
+  rest.post(`http://localhost:7891/rest/v1/entries`, (req, res, ctx) => {
+    return res(ctx.json([entry]));
+  }),
 
-  rest.get(
-    `${process.env.REACT_APP_SUPABASE_URL}/rest/v1/entries`,
-    (req, res, ctx) => {
-      const select = req.url.searchParams.get('select');
-      if (select === '*') {
-        return res(ctx.json(entries));
-      }
-      return res(ctx.json());
+  rest.get(`http://localhost:7891/rest/v1/entries`, (req, res, ctx) => {
+    const select = req.url.searchParams.get('select');
+    if (select === '*') {
+      return res(ctx.json(entries));
     }
-  )
+    return res(ctx.json());
+  })
 );
 
 beforeAll(() => server.listen());
