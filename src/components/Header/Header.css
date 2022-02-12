@@ -3,7 +3,13 @@
 }
 
 .toggle {
-  border: none;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: tomato;
 }
 
 .currentUser {

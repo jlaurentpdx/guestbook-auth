@@ -11,7 +11,9 @@ export default function Header() {
       <h1 className={styles.title}>Guestbook</h1>
       {theme === 'light' && <p>Viewing in light mode. </p>}
       {theme === 'dark' && <p>Viewing in dark mode.</p>}
-      <h3 onClick={toggleTheme}>Click to switch.</h3>
+      <h3 className={styles.toggle} onClick={toggleTheme}>
+        Click to switch.
+      </h3>
       {user ? (
         <h2>
           Thank you for signing,{' '}

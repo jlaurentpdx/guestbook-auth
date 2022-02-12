@@ -18,7 +18,7 @@ export default function GuestForm() {
       const newEntry = await createEntry(entry);
       setUser(name);
       setComment('');
-      await setEntries((prevState) => [newEntry[0], ...prevState]);
+      setEntries((prevState) => [newEntry[0], ...prevState]);
     } catch {
       alert('something went wrong');
     }
