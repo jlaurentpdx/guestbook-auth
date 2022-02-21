@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
 
 import Layout from './views/Layout/Layout';
 import Home from './views/Home/Home';
@@ -15,9 +16,9 @@ export default function App() {
         <Router>
           <Layout>
             <Switch>
-              <Route exact path="/">
+              <PrivateRoute exact path="/">
                 <Home />
-              </Route>
+              </PrivateRoute>
               <Route path="/login">
                 <Login />
               </Route>
