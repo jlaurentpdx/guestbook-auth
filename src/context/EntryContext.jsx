@@ -1,18 +1,18 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import { fetchEntries } from '../services/entries';
+// import { fetchEntries } from '../services/entries';
 
 export const EntriesContext = createContext();
 
 export function EntriesProvider({ children }) {
   const [entries, setEntries] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchEntries();
-      setEntries(data);
-    };
-    fetchData();
-  }, []);
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const data = await fetchEntries();
+  //       setEntries(data);
+  //     };
+  //     fetchData();
+  //   }, []);
 
   return (
     <EntriesContext.Provider value={{ entries, setEntries }}>
