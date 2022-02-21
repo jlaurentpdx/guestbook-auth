@@ -1,0 +1,21 @@
+.title {
+  margin-top: 0;
+}
+
+.toggle {
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: tomato;
+}
+
+.currentUser {
+  color: tomato;
+}
+
+.hidden {
+  visibility: hidden;
+}
