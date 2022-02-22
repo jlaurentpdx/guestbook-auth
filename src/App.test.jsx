@@ -42,5 +42,5 @@ test('should allow users to add a guestbook entry', async () => {
   });
 
   expect(testHeaders).toHaveLength(2);
-  expect(screen.getByText(/am jordan/i)).toBeInTheDocument();
+  expect(screen.getByText(/i am jordan/i)).toBeInTheDocument();
 });
