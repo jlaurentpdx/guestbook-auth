@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import LoginForm from '../../components/LoginForm/LoginForm';
 import { useUser } from '../../context/UserContext';
 
 export default function Login() {
@@ -21,25 +22,8 @@ export default function Login() {
   };
 
   return (
-    <form>
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Submit</button>
-      {error && <p>{error}</p>}
-    </form>
+    <LoginForm
+      {...{ email, setEmail, password, setPassword, error, handleLogin }}
+    />
   );
 }

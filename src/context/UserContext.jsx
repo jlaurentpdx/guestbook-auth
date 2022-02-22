@@ -6,18 +6,15 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
 
   const login = (email, password) => {
-    // create a boolean value to return
     const checkLogin =
       email === process.env.REACT_APP_AUTH_EMAIL &&
       password === process.env.REACT_APP_AUTH_PASSWORD;
-    if (checkLogin) setUser(email);
+    if (checkLogin) setUser('Jordan');
     return checkLogin;
   };
 
-  const logout = (callback) => {
+  const logout = () => {
     setUser(null);
-    callback();
-    // what is callback doing?
   };
 
   const value = useMemo(() => ({ user, login, logout }), [user]);
