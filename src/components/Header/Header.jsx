@@ -11,11 +11,9 @@ export default function Header() {
   return (
     <header>
       <h1 className={styles.title}>Guestbook</h1>
-      {theme === 'light' && <p>Viewing in light mode. </p>}
-      {theme === 'dark' && <p>Viewing in dark mode.</p>}
-      <h3 className={styles.toggle} onClick={toggleTheme}>
-        Click to switch.
-      </h3>
+      <p className={styles.toggle} onClick={toggleTheme}>
+        Viewing in {theme} mode.
+      </p>
       {user ? (
         entries.length > 0 ? (
           <h2>
