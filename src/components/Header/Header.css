@@ -4,18 +4,21 @@
 
 .toggle {
   width: fit-content;
+  font-weight: 100;
+  color: lightgray;
   margin: auto;
+  margin-bottom: 20px;
   cursor: pointer;
+
+  transition: 0.3s all;
 }
 
 .toggle:hover {
   color: tomato;
+
+  transition: 0.5s all;
 }
 
 .currentUser {
   color: tomato;
-}
-
-.hidden {
-  visibility: hidden;
 }
